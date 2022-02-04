@@ -30,7 +30,43 @@ export const notesReducer = (state = initialState, action) => {
         case noteTypes.setActive:
             return{
                 ...state,
-                active: action.payload
+                active:{ 
+                    ...state.active,
+                    ...action.payload
+                }
+            }
+        case noteTypes.updateNote:
+            return{
+                ...state,
+                notes: state.notes.map(note => {
+
+                    return (note.id === action.payload.id
+                    ?{
+                        ...note,
+                        title: action.payload.title,
+                        body: action.payload.body,        
+                    } 
+                    : note)
+                })
+            }
+        case noteTypes.updateImage:
+
+            return{
+                ...state,
+                active:{
+                    ...state.active,
+                    url: action.payload.url
+                },
+                notes: state.notes.map(note => {
+                    return (
+                        (note.id === action.payload.idNote)
+                        ? {
+                            ...note,
+                            url: action.payload.url
+                        }
+                        : note
+                    )
+                })
             }
         default:
             return state;

@@ -11,6 +11,7 @@ export const JournalEntry = ({id, date, title, body, url}) => {
 
     const handleClick = e => {
         e.preventDefault();
+
         dispatch(setNote({
             id, date, title, body, url
         }));

@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 
 import { authReducer } from '../reducers/authReducer';
 import { loadingLoginReducer } from '../reducers/loadingLoginReducer';
+import { notesReducer } from '../reducers/notesReducer';
 import { uiErrorFormReducer } from '../reducers/uiErrorFormReducer';
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
@@ -10,7 +11,8 @@ const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOO
 const reducers = combineReducers({
     auth: authReducer,
     errorForm: uiErrorFormReducer,
-    loading: loadingLoginReducer
+    loading: loadingLoginReducer,
+    notes: notesReducer
 })
 
 export const store = createStore(
